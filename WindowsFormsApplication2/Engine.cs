@@ -75,13 +75,6 @@ namespace WindowsFormsApplication2
                 }
             }
 
-            //foreach (string s in filesTmp)
-            //{
-            //    if ((s.Contains(".mkv") || s.Contains(".mp4") || s.Contains(".mpeg") || s.Contains(".avi") || s.Contains(".m4v") || s.Contains(".wmv")) && !(s.Contains("sample")))
-            //    {
-            //        selectedFiles.Add(s);
-            //    }
-            //}
 
             files = filesTmp.ToArray();
          }
