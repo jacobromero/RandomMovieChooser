@@ -29,6 +29,7 @@ namespace WindowsFormsApplication2
     {
         private static String[] directories;
         private static String[] files;
+        private static String[] fileTypes = { "*.mkv", "*.mp4", "*.mpeg", "*.avi", "*.m4v", "*.wmv" };
         private static int ranDir = 0;
         private static Random rand = new Random();
         private static string currentLine, mediaString;
@@ -68,18 +69,21 @@ namespace WindowsFormsApplication2
 
             for (int i = 0; i < directories.Length; i++)
             {
-                filesTmp.AddRange(Directory.GetFiles(directories[i], "*", SearchOption.AllDirectories));
-            }
-
-            foreach (string s in filesTmp)
-            {
-                if ((s.Contains(".mkv") || s.Contains(".mp4") || s.Contains(".mpeg") || s.Contains(".avi") || s.Contains(".m4v") || s.Contains(".wmv")) && !(s.Contains("sample")))
+                foreach (string extensions in fileTypes)
                 {
-                    selectedFiles.Add(s);
+                    filesTmp.AddRange(Directory.GetFiles(directories[i], extensions, SearchOption.AllDirectories));
                 }
             }
 
-            files = selectedFiles.ToArray();
+            //foreach (string s in filesTmp)
+            //{
+            //    if ((s.Contains(".mkv") || s.Contains(".mp4") || s.Contains(".mpeg") || s.Contains(".avi") || s.Contains(".m4v") || s.Contains(".wmv")) && !(s.Contains("sample")))
+            //    {
+            //        selectedFiles.Add(s);
+            //    }
+            //}
+
+            files = filesTmp.ToArray();
          }
 
         public static void pickMovie()
