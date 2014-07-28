@@ -71,10 +71,10 @@ namespace WindowsFormsApplication2
             {
                 foreach (string extensions in fileTypes)
                 {
-                    filesTmp.AddRange(Directory.GetFiles(directories[i], extensions, SearchOption.AllDirectories));
+                    if (Directory.Exists(directories[i]))
+                        filesTmp.AddRange(Directory.GetFiles(directories[i], extensions, SearchOption.AllDirectories));
                 }
             }
-
 
             files = filesTmp.ToArray();
          }
